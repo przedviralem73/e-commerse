@@ -1,5 +1,6 @@
 import {FC} from "react";
 import './ProductItem.css';
+import Button from "../../../component/ui/Button/Button";
 
 interface ProductProps {
     id: number;
@@ -23,6 +24,7 @@ const ProductItem: FC<ProductProps> = ({id, title, price, description, rating, i
                 <p className="product-rate">{rating.rate}</p>
                 <p className="product-price">{price}</p>
                 <p className="product-count">{rating.count}</p>
+                <Button idProduct={id}/>
             </div>
         </div>
     )
