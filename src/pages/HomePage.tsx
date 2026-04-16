@@ -11,6 +11,7 @@ const HomePage = () => {
     const [valueProducts, setValueProducts] = useState('');
 
 
+
     return (
         <div>
             <InputSearch setValueProducts={setValueProducts}/>

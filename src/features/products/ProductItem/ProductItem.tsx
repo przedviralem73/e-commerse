@@ -1,6 +1,6 @@
 import {FC} from "react";
 import './ProductItem.css';
-import Button from "../../../component/ui/Button/Button";
+import ButtonAddToCart from "../../../component/ui/ButtonAddToCart/ButtonAddToCart";
 
 interface ProductProps {
     id: number;
@@ -17,14 +17,14 @@ interface ProductProps {
 
 const ProductItem: FC<ProductProps> = ({id, title, price, description, rating, image, category}) => {
     return (
-        <div className="product-item" key={title}>
+        <div className="product-item" key={id}>
             <div className="product-info">
                 <img className="product-img" alt={title} src={image}/>
                 <h4 className="product-title">{title}</h4>
                 <p className="product-rate">{rating.rate}</p>
                 <p className="product-price">{price}</p>
                 <p className="product-count">{rating.count}</p>
-                <Button idProduct={id}/>
+                <ButtonAddToCart idProduct={id}/>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import {FC, useEffect, useState} from "react";
-
+import ButtonDeleteInCart from "../../../component/ui/ButtonDeleteInCart/ButtonDeleteInCart";
+import './ProductCart.css'
 
 
 const ProductCart:FC= () => {
@@ -17,33 +18,41 @@ const ProductCart:FC= () => {
         }
     }
 
-    const [products, setProducts] = useState<Product[]>();
+    const [products, setProducts] = useState<Product[]>([]);
+
+    const [rawCart, setRawCart] = useState(() => localStorage.getItem('cart'))
 
     useEffect(() => {
-        const rawCart = window.localStorage.getItem('cart');
-        const rawCartArr = rawCart?.split(',');
-        console.log(rawCartArr);
-        rawCartArr?.map((rC) => {
-            fetch(`https://fakestoreapi.com/products/${rC}`)
-                .then((res) => res.json())
-                .then((data) => setProducts([...products, data]))
-        })
-    }, []);
 
+      if(!rawCart){
+          setProducts([])
+          return;
+      }
+
+      const fetchCart = rawCart?.split(',').map((r) =>
+          fetch(`https://fakestoreapi.com/products/${r}`)
+              .then((res) => res.json())
+              .catch((error) => console.log(error.message))
+      )
+
+      Promise.all(fetchCart).then((result) => setProducts(result));
+
+    }, [rawCart]);
 
 
     return (
         <div className='product-cart'>
             {
-                products ? (
+                products.length > 0 ? (
                     products.map((p) => (
-                        <div className="product-сart-item" key={p.title}>
+                        <div className="product-сart-item" key={p.id}>
                             <div className="product-сart-info">
                                 <img className="product-сart-img" alt={p.title} src={p.image}/>
                                 <h4 className="product-сart-title">{p.title}</h4>
                                 <p className="product-сart-rate">{p.rating.rate}</p>
                                 <p className="product-сart-price">{p.price}</p>
                                 <p className="product-сart-count">{p.rating.count}</p>
+                                <ButtonDeleteInCart rawCart={rawCart} setRawCart={setRawCart} idProduct={p.id}/>
                             </div>
                         </div>
                     ))

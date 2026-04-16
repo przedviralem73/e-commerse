@@ -41,7 +41,7 @@ const ProductsListPage = () => {
                         ))
                     ) : (
                         products.map((p) => (
-                            <ProductItem id={p.id} title={p.title} price={p.price} description={p.description} category={p.category} image={p.image} rating={p.rating}/>
+                            <ProductItem key={p.id} id={p.id} title={p.title} price={p.price} description={p.description} category={p.category} image={p.image} rating={p.rating}/>
                         ))
                     )
                 ) :

@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 const Header: FC = () => {
     return (
         <header>
+            <Link to="/">HOME</Link>
+            <br/>
             <Link to="/cart">CART</Link>
         </header>
     )
