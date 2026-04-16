@@ -251,3 +251,93 @@
     border-radius: 15px;
     text-align: center;
 }
+
+/* Контейнер для контролов количества */
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: #f7fafc;
+    padding: 8px 15px;
+    border-radius: 40px;
+    width: fit-content;
+    margin: 15px auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Стили для кнопок + и - */
+.quantity span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #667eea;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    user-select: none;
+}
+
+.quantity span:hover {
+    background: #667eea;
+    color: white;
+    transform: scale(1.1);
+}
+
+.quantity span:active {
+    transform: scale(0.95);
+}
+
+/* Само число (количество) */
+.quantity {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2d3748;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Альтернативный стиль - для карточки товара */
+.product-quantity {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    padding: 10px 20px;
+    border-radius: 50px;
+    width: fit-content;
+}
+
+.product-quantity button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: white;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #667eea;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-quantity button:hover {
+    background: #667eea;
+    color: white;
+    transform: scale(1.05);
+}
+
+.product-quantity span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2d3748;
+    min-width: 40px;
+    text-align: center;
+}

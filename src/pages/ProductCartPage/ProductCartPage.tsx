@@ -22,6 +22,7 @@ const ProductCartPage:FC= () => {
 
     const [rawCart, setRawCart] = useState(() => localStorage.getItem('cart'))
 
+
     useEffect(() => {
 
       if(!rawCart){
@@ -29,8 +30,17 @@ const ProductCartPage:FC= () => {
           return;
       }
 
-      const fetchCart = rawCart?.split(',').map((r) =>
-          fetch(`https://fakestoreapi.com/products/${r}`)
+      const rawCartObj = JSON.parse(rawCart);
+
+      const rawCartArr = [];
+
+        for (const rawCartObjKey in rawCartObj) {
+            rawCartArr.push(rawCartObj[rawCartObjKey]);
+        }
+
+
+      const fetchCart = rawCartArr.map((r) =>
+          fetch(`https://fakestoreapi.com/products/${r.productId}`)
               .then((res) => res.json())
               .catch((error) => console.log(error.message))
       )
@@ -38,6 +48,40 @@ const ProductCartPage:FC= () => {
       Promise.all(fetchCart).then((result) => setProducts(result));
 
     }, [rawCart]);
+
+    function addQuantity(idProduct:number) {
+        if(!rawCart){
+            return;
+        }
+
+        const rawCartObj = JSON.parse(rawCart);
+
+        rawCartObj[idProduct].quantity += 1;
+
+        window.localStorage.setItem('cart', JSON.stringify(rawCartObj));
+        setRawCart(JSON.stringify(rawCartObj));
+    }
+
+    function minusQuantity(idProduct:number) {
+        if(!rawCart){
+            return;
+        }
+
+        const rawCartObj = JSON.parse(rawCart);
+
+
+        rawCartObj[idProduct].quantity -= 1;
+
+        if(rawCartObj[idProduct].quantity <= 0){
+            delete rawCartObj[idProduct.toString()];
+
+            window.localStorage.setItem('cart', JSON.stringify(rawCartObj));
+            setRawCart(JSON.stringify(rawCartObj));
+        }
+
+        window.localStorage.setItem('cart', JSON.stringify(rawCartObj));
+        setRawCart(JSON.stringify(rawCartObj));
+    }
 
 
     return (
@@ -52,6 +96,7 @@ const ProductCartPage:FC= () => {
                                 <p className="product-сart-rate">{p.rating.rate}</p>
                                 <p className="product-сart-price">{p.price}</p>
                                 <p className="product-сart-count">{p.rating.count}</p>
+                                <p className="quantity"><span onClick={() => minusQuantity(p.id)}>-</span> {JSON.parse(rawCart as string)[p.id]?.quantity} <span onClick={() => addQuantity(p.id)}>+</span></p>
                                 <ButtonDeleteInCart rawCart={rawCart} setRawCart={setRawCart} idProduct={p.id}/>
                             </div>
                         </div>

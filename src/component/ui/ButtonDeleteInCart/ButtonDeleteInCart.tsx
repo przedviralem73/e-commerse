@@ -10,13 +10,14 @@ interface ButtonDeleteInCartProps {
 const ButtonDeleteInCart: FC<ButtonDeleteInCartProps> = ({idProduct, setRawCart, rawCart}) => {
 
     function deleteProduct(idProduct:number) {
-        let rawCartArr = rawCart?.split(',');
-        if(!rawCartArr){
+        if(!rawCart){
             return;
         }
-        rawCartArr = rawCartArr?.filter((r) => Number(r) !== idProduct);
-        window.localStorage.setItem('cart', rawCartArr.toString());
-        setRawCart(rawCartArr.toString());
+        let rawCartObj = JSON.parse(rawCart);
+        delete rawCartObj[idProduct.toString()];
+
+        window.localStorage.setItem('cart', JSON.stringify(rawCartObj));
+        setRawCart(JSON.stringify(rawCartObj));
     }
 
     return (
