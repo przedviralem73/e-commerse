@@ -1,6 +1,7 @@
 import {FC} from "react";
 import './ProductItem.css';
 import ButtonAddToCart from "../../../component/ui/ButtonAddToCart/ButtonAddToCart";
+import {useNavigate} from "react-router-dom";
 
 interface ProductProps {
     id: number;
@@ -16,8 +17,11 @@ interface ProductProps {
 }
 
 const ProductItem: FC<ProductProps> = ({id, title, price, description, rating, image, category}) => {
+
+    const navigate = useNavigate();
+
     return (
-        <div className="product-item" key={id}>
+        <div className="product-item" onClick={() => navigate(`/product/${id}`)} key={id}>
             <div className="product-info">
                 <img className="product-img" alt={title} src={image}/>
                 <h4 className="product-title">{title}</h4>

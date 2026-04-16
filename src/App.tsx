@@ -1,8 +1,9 @@
 import React from 'react';
 import HomePage from "./pages/HomePage";
 import {Routes, Route} from "react-router-dom";
-import ProductCart from "./features/cart/ProductCart/ProductCart";
+import ProductCartPage from "./pages/ProductCartPage/ProductCartPage";
 import Header from "./component/layout/Header/Header";
+import ProductCard from "./pages/ProductCard/ProductCard";
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
         <Header />
         <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/cart" element={<ProductCart/>} />
+            <Route path="/cart" element={<ProductCartPage/>} />
+            <Route path="/product/:id" element={<ProductCard/>} />
         </Routes>
     </div>
   );

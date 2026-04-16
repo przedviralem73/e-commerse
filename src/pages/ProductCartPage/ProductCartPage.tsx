@@ -1,9 +1,9 @@
 import {FC, useEffect, useState} from "react";
-import ButtonDeleteInCart from "../../../component/ui/ButtonDeleteInCart/ButtonDeleteInCart";
-import './ProductCart.css'
+import ButtonDeleteInCart from "../../component/ui/ButtonDeleteInCart/ButtonDeleteInCart";
+import './ProductCartPage.css'
 
 
-const ProductCart:FC= () => {
+const ProductCartPage:FC= () => {
 
     interface Product {
         id: number;
@@ -64,4 +64,4 @@ const ProductCart:FC= () => {
     )
 }
 
-export default ProductCart;
+export default ProductCartPage;
