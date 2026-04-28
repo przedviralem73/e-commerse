@@ -1,0 +1,279 @@
+/* Основной контейнер */
+.wish-list {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    min-height: 60vh;
+}
+
+
+/* Сетка товаров */
+.wish-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Карточка товара */
+.wish-list-item {
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    animation: fadeInUp 0.5s ease;
+    border: 1px solid rgba(229, 62, 62, 0.1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wish-list-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px rgba(229, 62, 62, 0.15);
+    border-color: rgba(229, 62, 62, 0.3);
+}
+
+/* Сердечко в углу карточки */
+.wish-list-item::before {
+    content: "❤️";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    opacity: 0.8;
+    z-index: 1;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Информация о товаре */
+.wish-list-info {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* Изображение */
+.wish-list-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.wish-list-item:hover .wish-list-img {
+    transform: scale(1.05);
+}
+
+/* Название */
+.wish-list-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 15px 0 10px;
+    height: 45px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+}
+
+/* Рейтинг */
+.wish-list-rate {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #744210;
+    margin: 10px 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.wish-list-rate::before {
+    content: "⭐";
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+/* Цена */
+.wish-list-price {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 15px 0;
+    position: relative;
+    display: inline-block;
+}
+
+.wish-list-price::before {
+    content: "$";
+    font-size: 18px;
+    background: none;
+    color: #e53e3e;
+    margin-right: 3px;
+}
+
+/* Количество отзывов */
+.wish-list-count {
+    color: #718096;
+    font-size: 12px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.wish-list-count::before {
+    content: "📝";
+    font-size: 12px;
+}
+
+/* Пустая корзина */
+.wish-list:has(> h4) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.wish-list h4 {
+    font-size: 24px;
+    color: #a0aec0;
+    text-align: center;
+    padding: 50px;
+    background: #f7fafc;
+    border-radius: 20px;
+    animation: pulse 1.5s ease infinite;
+    grid-column: 1 / -1;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+}
+
+/* Кнопка "Добавить в корзину" (добавьте в компонент) */
+.wish-list-add-to-cart {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.wish-list-add-to-cart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Кнопка удаления из избранного */
+.wish-list-remove {
+    background: transparent;
+    color: #e53e3e;
+    border: 2px solid #e53e3e;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.wish-list-remove:hover {
+    background: #e53e3e;
+    color: white;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .wish-list {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .wish-list::before {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .wish-list-img {
+        height: 160px;
+    }
+
+    .wish-list-title {
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .wish-list-price {
+        font-size: 20px;
+    }
+
+    .wish-list h4 {
+        font-size: 18px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wish-list {
+        grid-template-columns: 1fr;
+    }
+
+    .wish-list-img {
+        height: 200px;
+    }
+}
+
+/* Анимация появления */
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.wish-list-item::before {
+    animation: heartBeat 1.5s ease infinite;
+}

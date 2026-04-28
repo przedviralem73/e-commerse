@@ -1,5 +1,5 @@
-import ProductsList from "../features/products/ProductsList/ProductsList";
-import InputSearch from "../component/ui/InputSearch/InputSearch";
+import ProductsList from "../../features/products/ProductsList/ProductsList";
+import InputSearch from "../../component/ui/InputSearch/InputSearch";
 import {createContext, useState} from "react";
 
 

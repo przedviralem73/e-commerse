@@ -1,0 +1,81 @@
+/* Основной стиль кнопки удаления */
+.btn-delete-wishlist {
+    background: linear-gradient(135deg, #fc8181 0%, #e53e3e 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(229, 62, 62, 0.2);
+}
+
+/* Эффект при наведении */
+.btn-delete-wishlist:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+    box-shadow: 0 6px 18px rgba(229, 62, 62, 0.3);
+}
+
+/* Эффект при нажатии */
+.btn-delete-wishlist:active {
+    transform: translateY(0px);
+}
+
+/* Иконка сердечка */
+.btn-delete-wishlist::before {
+    content: "❤️";
+    font-size: 14px;
+    transition: transform 0.2s ease;
+}
+
+/* Анимация иконки при наведении */
+.btn-delete-wishlist:hover::before {
+    transform: scale(1.1);
+}
+
+/* Альтернативный стиль — только иконка (для мобилок) */
+@media (max-width: 480px) {
+    .btn-delete-wishlist {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .btn-delete-wishlist::before {
+        font-size: 12px;
+    }
+}
+
+/* Стиль для кнопки в карточке товара */
+.wish-list-item .btn-delete-wishlist {
+    background: rgba(229, 62, 62, 0.1);
+    color: #e53e3e;
+    border: 2px solid #e53e3e;
+    box-shadow: none;
+}
+
+.wish-list-item .btn-delete-wishlist::before {
+    content: "🗑️";
+}
+
+.wish-list-item .btn-delete-wishlist:hover {
+    background: #e53e3e;
+    color: white;
+}
+
+/* Стиль для кнопки на странице избранного */
+.wish-list .btn-delete-wishlist {
+    background: linear-gradient(135deg, #fc8181 0%, #e53e3e 100%);
+    color: white;
+    margin-top: 10px;
+}

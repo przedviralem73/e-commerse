@@ -18,6 +18,7 @@ const ButtonDeleteInCart: FC<ButtonDeleteInCartProps> = ({idProduct, setRawCart,
 
         window.localStorage.setItem('cart', JSON.stringify(rawCartObj));
         setRawCart(JSON.stringify(rawCartObj));
+
     }
 
     return (

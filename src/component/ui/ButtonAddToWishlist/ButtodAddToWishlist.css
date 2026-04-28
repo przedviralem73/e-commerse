@@ -1,0 +1,100 @@
+/* Основной стиль кнопки добавления в избранное */
+.btn-add-wishlist {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+/* Эффект при наведении */
+.btn-add-wishlist:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    box-shadow: 0 6px 18px rgba(102, 126, 234, 0.3);
+}
+
+/* Эффект при нажатии */
+.btn-add-wishlist:active {
+    transform: translateY(0px);
+}
+
+/* Иконка пустого сердечка */
+.btn-add-wishlist::before {
+    content: "🤍";
+    font-size: 14px;
+    transition: transform 0.2s ease;
+}
+
+/* Анимация иконки при наведении */
+.btn-add-wishlist:hover::before {
+    transform: scale(1.1);
+    content: "❤️";
+}
+
+/* Анимация появления */
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn-add-wishlist:active::before {
+    animation: heartBeat 0.3s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .btn-add-wishlist {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .btn-add-wishlist::before {
+        font-size: 12px;
+    }
+}
+
+/* Стиль для карточки товара на главной */
+.product-item .btn-add-wishlist {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: 2px solid #667eea;
+    box-shadow: none;
+}
+
+.product-item .btn-add-wishlist:hover {
+    background: #667eea;
+    color: white;
+}
+
+.product-item .btn-add-wishlist:hover::before {
+    color: white;
+}
+
+/* Стиль для страницы товара */
+.product-card .btn-add-wishlist {
+    padding: 12px 24px;
+    font-size: 16px;
+    width: auto;
+    min-width: 180px;
+}
