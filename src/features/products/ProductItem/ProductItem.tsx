@@ -2,6 +2,8 @@ import {FC} from "react";
 import './ProductItem.css';
 import ButtonAddToCart from "../../../component/ui/ButtonAddToCart/ButtonAddToCart";
 import {useNavigate} from "react-router-dom";
+import ButtonAddToWishlist from "../../../component/ui/ButtonAddToWishlist/ButtonAddToWishlist";
+import ButtonWishList from "../../../component/ui/ButtonWishlist/ButtonWishList";
 
 interface ProductProps {
     id: number;
@@ -29,6 +31,7 @@ const ProductItem: FC<ProductProps> = ({id, title, price, description, rating, i
                 <p className="product-price">{price}</p>
                 <p className="product-count">{rating.count}</p>
                 <ButtonAddToCart idProduct={id}/>
+                <ButtonWishList productId={id}/>
             </div>
         </div>
     )
