@@ -1,0 +1,1 @@
+const WishlistPage: Page = {}
